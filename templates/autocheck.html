@@ -9,12 +9,21 @@
         .center-block {
             margin: 0 auto;
         }
+
         .tnt {
-            Writing-mode:lr-tb;
-            Text-align:left;
-            font-size:20pt;
+            Writing-mode: lr-tb;
+            Text-align: left;
+            font-size: 20pt;
         }
     </style>
+    <script>
+        function func(obj, spanId) {
+            var v = obj.value;
+            var lessLength = v.split("-").length - 1;
+            var eLength = v.split("e").length - 1;
+            var plusLength = v.split("+").length - 1;
+        }
+    </script>
 </head>
 <body>
 <table border="1" align="center">
@@ -28,47 +37,6 @@
     </tr>
     </tbody>
 </table>
-{#<table border="1" style="width:100%">#}
-{#    <colgroup>#}
-{#        <col style="width: 4%"/>#}
-{#        <col style="width: 8%"/>#}
-{#        <col style="width: 5%"/>#}
-{#        <col style="width: 10%"/>#}
-{#        <col style="width: 5%"/>#}
-{#        <col style="width: 0%"/>#}
-{#        <col style="width: 20%"/>#}
-{#        <col style="width: 0%"/>#}
-{#        <col style="width: 6%"/>#}
-{#        <col style="width: 25%"/>#}
-{#    </colgroup>#}
-{#    <tbody>#}
-{#    <tr class="odd">#}
-{#        <td rowspan="5" ><p><strong>项目1</strong></p></td>#}
-{#        <td colspan="3"><strong>巡检时间</strong>(HH:MM)</td>#}
-{##}
-{#        <td colspan="4"><strong>巡检项目</strong></td>#}
-{#        <td colspan="2"><strong>LIS与HIS交互 服务器巡检 101.130</strong></td>#}
-{#    </tr>#}
-{#    <tr class="even">#}
-{#        <td colspan="9"><strong>1.操作系统空间（不能少于备注剩余空间）</strong></td>#}
-{#    </tr>#}
-{#    <tr class="odd">#}
-{#        <td colspan="2">C:(5.6GB)</td>#}
-{#        <td colspan="2"></td>#}
-{#        <td colspan="2">D:（9.6G）</td>#}
-{#        <td colspan="3"></td>#}
-{#    </tr>#}
-{#    <tr class="even">#}
-{#        <td colspan="9"><strong>2.检查LIS服务是否开启:</strong></td>#}
-{#    </tr>#}
-{#    <tr class="odd">#}
-{#        <td><strong>启动lis程序</strong></td>#}
-{#        <td colspan="2"><strong>启动□ 未启动□</strong></td>#}
-{#        <td colspan="5"><strong>启动lis替代程序</strong></td>#}
-{#        <td><strong>启动□ 未启动□</strong></td>#}
-{#    </tr>#}
-{#    </tbody>#}
-{#</table>#}
 <table border="1" style="width:100%">
     <colgroup>
         <col style="width: 5%"/>
@@ -172,45 +140,46 @@
     <tr class="even">
         <td><p><strong>是否存在僵尸主机风险</strong></p>
             <p><strong>（存在的话写下IP地址）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3"><p><strong>处置情况</strong></p>
             <p><strong>（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
         <td><p><strong>是否有业务已失陷</strong></p>
             <p><strong>（存在的话写下IP地址）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3"><p><strong>处置情况</strong></p>
             <p><strong>（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td><p><strong>业务被攻击几次</strong></p>
             <p><strong>（从攻击事件汇总里面查看）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3"><p><strong>处置情况</strong></p>
             <p><strong>（是否都把攻击IP加入封堵名单）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
         <td><p><strong>是否存在失陷用户</strong></p>
             <p><strong>（存在的话写下IP地址）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3"><p><strong>处置情况</strong></p>
             <p><strong>（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td><p><strong>是否存在全网实时热点事件</strong></p>
             <p><strong>（存在的话蓝色的会变红，点击查看后，写下IP地址）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3"><p><strong>处置情况</strong></p>
             <p><strong>（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
         <td colspan="6"><strong>异常情况：</strong></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     </tbody>
 </table>
@@ -266,33 +235,33 @@
     </tr>
     <tr class="odd">
         <td>RS</td>
-        <td colspan="3"></td>
-        <td colspan="2"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">R</td>
-        <td colspan="2"></td>
-        <td colspan="3"></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="6">电池电流：</td>
-        <td colspan="10"></td>
+        <td colspan="10"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td>ST</td>
-        <td colspan="3"></td>
-        <td colspan="2"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">S</td>
-        <td colspan="2"></td>
-        <td colspan="3"></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="6">是否正在充电</td>
         <td colspan="10">是□ 否□</td>
     </tr>
     <tr class="odd">
         <td>TR</td>
-        <td colspan="3"></td>
-        <td colspan="2"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">T</td>
-        <td colspan="2"></td>
-        <td colspan="3"></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="6"></td>
-        <td colspan="10"></td>
+        <td colspan="10"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td>输出</td>
@@ -310,45 +279,45 @@
     </tr>
     <tr class="odd">
         <td>R</td>
-        <td colspan="3"></td>
-        <td colspan="2"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">RS</td>
-        <td colspan="2"></td>
-        <td colspan="3"></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">R</td>
-        <td colspan="3"></td>
-        <td colspan="4"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">R</td>
-        <td colspan="2"></td>
-        <td></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td>S</td>
-        <td colspan="3"></td>
-        <td colspan="2"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">ST</td>
-        <td colspan="2"></td>
-        <td colspan="3"></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">S</td>
-        <td colspan="3"></td>
-        <td colspan="4"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">S</td>
-        <td colspan="2"></td>
-        <td></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
         <td>T</td>
-        <td colspan="3"></td>
-        <td colspan="2"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">TR</td>
-        <td colspan="2"></td>
-        <td colspan="3"></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">T</td>
-        <td colspan="3"></td>
-        <td colspan="4"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">T</td>
-        <td colspan="2"></td>
-        <td></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td colspan="14"><strong>巡检时间</strong>(HH:MM)</td>
@@ -357,43 +326,43 @@
     </tr>
     <tr class="odd">
         <td colspan="3">输出电压:</td>
-        <td colspan="4"></td>
+        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="4">输出电流:</td>
-        <td colspan="6"></td>
+        <td colspan="6"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">频率:</td>
-        <td colspan="4"></td>
+        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">负载:</td>
-        <td colspan="2">　</td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td colspan="3">输入电压:</td>
-        <td colspan="4"></td>
+        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="4">输入电流:</td>
-        <td colspan="6"></td>
+        <td colspan="6"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">频率:</td>
-        <td colspan="3"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="4">旁路电压:</td>
-        <td colspan="2"><strong>　</strong></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
         <td colspan="3">正电池电压:</td>
-        <td colspan="4"></td>
+        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="5">负电池电压:</td>
-        <td colspan="10">　</td>
+        <td colspan="10"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="5">有无err日志:</td>
-        <td colspan="2">　</td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td colspan="2">模块1:</td>
-        <td colspan="3"></td>
+        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">模块2:</td>
-        <td colspan="2"></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="4">模块3:</td>
-        <td colspan="4"></td>
+        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">空调:</td>
-        <td colspan="5"></td>
+        <td colspan="5"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">湿度:</td>
-        <td colspan="2"></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
         <td colspan="29"><strong>异常情况：</strong></td>
@@ -704,17 +673,22 @@
         <td colspan="2" rowspan="2"><p><strong>新精密空调：</strong></p>
             <p><strong>(本周是否开放：是□ 否□)</strong></p></td>
         <td colspan="3"><strong>室内温度:</strong></td>
-        <td colspan="2"></td>
+        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td rowspan="2"><p><strong>老精密空调：</strong></p>
-            <p><strong>(本周是否开放：是□ 否□)</strong></p></td>
+            <p><strong>(本周是否开放：
+                <input type="radio" name="gender" value="是"/>是
+                <input type="radio" name="gender" value="否"/>否
+                ）
+            </strong></p>
+        </td>
         <td colspan="3"><strong>室内温度:</strong></td>
-        <td></td>
+        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>室内湿度:</strong></td>
-        <td colspan="2"></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3"><strong>室内湿度:</strong></td>
-        <td></td>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
         <td colspan="12"><strong>异常情况：</strong></td>
