@@ -27,13 +27,13 @@
 </head>
 <body>
 <table border="1" align="center">
-    <caption>信息处每日巡检表</caption>
+    <caption font-size:100%>信息处每日巡检表</caption>
     <colgroup>
         <col style="width: 100%"/>
     </colgroup>
     <tbody>
     <tr class="even">
-        <td>巡检日期： 年 月 日 巡检人签名： 审核人： 审核时间： 年 月 日</td>
+        <td>巡检日期：<input type="date"></td>
     </tr>
     </tbody>
 </table>
@@ -48,26 +48,30 @@
     </colgroup>
     <tbody>
     <tr class="odd">
-        <td rowspan="5"><p><strong>项目1<br/>
-        <td colspan="2"><strong>巡检时间</strong>(HH:MM)</td>
-        <td></td>
+        <td rowspan="5"><p><strong>项目1</strong></p></td>
+        <td colspan="3"><strong>巡检时间</strong>(HH:MM)<input type="time"></td>
         <td><strong>巡检项目</strong></td>
         <td><strong>虚拟化平台巡检</strong></td>
     </tr>
     <tr class="even">
         <td><strong>云机房设备 11.7 (不能超过85%)：</strong></td>
-        <td><strong>正常□ 异常□</strong></td>
-        <td colspan="3"><strong>异常情况：</strong></td>
+        <td><strong><input type="radio" name="b" value="正常"/>正常<input type="radio" name="b" value="异常"/>异常</strong></td>
+        <td colspan="3"><strong>异常情况：<input type="text" id="qq" onchange="func(this,'ss');"><span
+                id="ss"></span></strong></td>
     </tr>
     <tr class="odd">
         <td><strong>深信服超融合 106.8 (不能超过85%)：</strong></td>
-        <td><strong>正常□ 异常</strong></td>
-        <td colspan="3"><strong>异常情况：</strong></td>
+        <td><strong><input type="radio" name="b1" value="正常"/>正常<input type="radio" name="b1" value="异常"/>异常</strong>
+        </td>
+        <td colspan="3"><strong>异常情况：<input type="text" id="qq" onchange="func(this,'ss');"><span
+                id="ss"></span></strong></td>
     </tr>
     <tr class="even">
         <td><strong>VM 100.25(不能超过85%)：</strong></td>
-        <td><strong>正常□ 异常□</strong></td>
-        <td colspan="3"><strong>异常情况：</strong></td>
+        <td><strong><input type="radio" name="b2" value="正常"/>正常<input type="radio" name="b2" value="异常"/>异常</strong>
+        </td>
+        <td colspan="3"><strong>异常情况：<input type="text" id="qq" onchange="func(this,'ss');"><span
+                id="ss"></span></strong></td>
     </tr>
     </tbody>
 </table>
@@ -82,17 +86,19 @@
     <tbody>
     <tr class="odd">
         <td rowspan="3"><strong>项目2<br/>
-        <td><strong>巡检时间</strong>(HH:MM)</td>
+        <td><strong>巡检时间</strong>(HH:MM)<input type="time"></td>
         <td><strong>巡检项目</strong></td>
         <td colspan="2"><strong>PACS NAS 服务器105.22</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>1.Server Status Console 状态</strong></td>
-        <td><strong>正常□ 异常□</strong></td>
+        <td><strong><input type="radio" name="b3" value="正常"/>正常<input type="radio" name="b3" value="异常"/>异常</strong>
+        </td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>2.剩余空间（不能超过80%）</strong></td>
-        <td><strong>正常□ 异常□</strong></td>
+        <td><strong><input type="radio" name="b4" value="正常"/>正常<input type="radio" name="b4" value="异常"/>异常</strong>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -107,16 +113,18 @@
     <tbody>
     <tr class="odd">
         <td rowspan="3"><strong>项目3</strong></td>
-        <td colspan="2"><strong>巡检时间</strong>(HH:MM)</td>
+        <td colspan="2"><strong>巡检时间</strong>(HH:MM)<input type="time"></td>
         <td><strong>巡检项目</strong></td>
         <td><strong>防统方 巡检 100.197</strong></td>
     </tr>
     <tr class="even">
         <td><strong>是否有异常统方</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="b5" value="正常"/>正常<input type="radio" name="b5" value="异常"/>异常</strong>
+        </td>
     </tr>
     <tr class="odd">
-        <td colspan="4"><strong>异常情况：</strong></td>
+        <td colspan="4"><strong>异常情况：<input type="text" id="qq" onchange="func(this,'ss');"><span
+                id="ss"></span></strong></td>
     </tr>
     </tbody>
 </table>
@@ -133,59 +141,49 @@
     <tbody>
     <tr class="odd">
         <td rowspan="7"><strong>项目4</strong></td>
-        <td colspan="3"><strong>巡检时间</strong>(HH:MM)</td>
+        <td colspan="3"><strong>巡检时间</strong>(HH:MM)<input type="time"></td>
         <td><strong>巡检项目</strong></td>
         <td colspan="2"><strong>日常网络安全监测 巡检</strong></td>
     </tr>
     <tr class="even">
-        <td><p><strong>是否存在僵尸主机风险</strong></p>
-            <p><strong>（存在的话写下IP地址）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><p><strong>处置情况</strong></p>
-            <p><strong>（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td><p><strong>是否存在僵尸主机风险（存在的话写下IP地址）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><p><strong>处置情况（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
-        <td><p><strong>是否有业务已失陷</strong></p>
-            <p><strong>（存在的话写下IP地址）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><p><strong>处置情况</strong></p>
-            <p><strong>（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td><p><strong>是否有业务已失陷（存在的话写下IP地址）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><p><strong>处置情况（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
-        <td><p><strong>业务被攻击几次</strong></p>
-            <p><strong>（从攻击事件汇总里面查看）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><p><strong>处置情况</strong></p>
-            <p><strong>（是否都把攻击IP加入封堵名单）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td><p><strong>业务被攻击几次（从攻击事件汇总里面查看）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><p><strong>处置情况（是否都把攻击IP加入封堵名单）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
-        <td><p><strong>是否存在失陷用户</strong></p>
-            <p><strong>（存在的话写下IP地址）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><p><strong>处置情况</strong></p>
-            <p><strong>（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td><p><strong>是否存在失陷用户（存在的话写下IP地址）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><p><strong>处置情况（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
-        <td><p><strong>是否存在全网实时热点事件</strong></p>
-            <p><strong>（存在的话蓝色的会变红，点击查看后，写下IP地址）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><p><strong>处置情况</strong></p>
-            <p><strong>（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td><p><strong>是否存在全网实时热点事件（存在的话蓝色的会变红，点击查看后，写下IP地址）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><p><strong>处置情况（杀毒软件查杀是否有病毒，是否有漏洞，处理完10分钟后看看是否处理成功）</strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
-        <td colspan="6"><strong>异常情况：</strong></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="6"><strong>异常情况：<input type="text" id="qq" onchange="func(this,'ss');"><span
+                id="ss"></span></strong></td>
     </tr>
     </tbody>
 </table>
 <table style="width:100%" border="1">
     <colgroup>
-        <col style="width: 5%"/>
+        <col style="width: 25%"/>
         <col style="width: 6%"/>
         <col style="width: 2%"/>
         <col style="width: 4%"/>
@@ -219,9 +217,9 @@
     <tbody>
     <tr class="odd">
         <td rowspan="15"><p><strong>项目5</strong></p>
-        <td colspan="15"><strong>巡检时间</strong>(HH:MM)</td>
-        <td colspan="6"><strong>巡检项目</strong></td>
-        <td colspan="8"><strong>新科士达 UPS巡检</strong></td>
+        <td colspan="10"><strong>巡检时间</strong>(HH:MM)<input type="time"></td>
+        <td colspan="10"><strong>巡检项目</strong></td>
+        <td colspan="10"><strong>新科士达 UPS巡检</strong></td>
     </tr>
     <tr class="even">
         <td>主路</td>
@@ -230,38 +228,39 @@
         <td colspan="2">旁路</td>
         <td colspan="2">电压</td>
         <td colspan="3">频率</td>
-        <td colspan="6">电池电压：</td>
-        <td colspan="10"></td>
+        <td colspan="16"></td>
     </tr>
     <tr class="odd">
         <td>RS</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">R</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="6">电池电流：</td>
-        <td colspan="10"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="6">电池电压：</td>
+        <td colspan="10"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+
     </tr>
     <tr class="even">
         <td>ST</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">S</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="6">是否正在充电</td>
-        <td colspan="10">是□ 否□</td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="6">电池电流：</td>
+        <td colspan="10"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+
     </tr>
     <tr class="odd">
         <td>TR</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">T</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="6"></td>
-        <td colspan="10"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="6">是否正在充电</td>
+        <td colspan="10"><input type="radio" name="c" value="是"/>是<input type="radio" name="c" value="否"/>否</td>
     </tr>
     <tr class="even">
         <td>输出</td>
@@ -279,93 +278,94 @@
     </tr>
     <tr class="odd">
         <td>R</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">RS</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">R</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">R</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td>S</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">ST</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">S</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">S</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
         <td>T</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">TR</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">T</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
-        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">T</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
-        <td colspan="14"><strong>巡检时间</strong>(HH:MM)</td>
-        <td colspan="4"><strong>巡检项目</strong></td>
-        <td colspan="11"><strong>科士达 UPS巡检</strong></td>
+        <td colspan="10"><strong>巡检时间</strong>(HH:MM)<input type="time"></td>
+        <td colspan="10"><strong>巡检项目</strong></td>
+        <td colspan="10"><strong>科士达 UPS巡检</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3">输出电压:</td>
-        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="4">输出电流:</td>
-        <td colspan="6"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">频率:</td>
-        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">负载:</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td colspan="3">输入电压:</td>
-        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="4">输入电流:</td>
-        <td colspan="6"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="6"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">频率:</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="4">旁路电压:</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
         <td colspan="3">正电池电压:</td>
-        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="5">负电池电压:</td>
-        <td colspan="10"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="10"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="5">有无err日志:</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td colspan="2">模块1:</td>
-        <td colspan="3"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">模块2:</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="4">模块3:</td>
-        <td colspan="4"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="4"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="3">空调:</td>
-        <td colspan="5"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="5"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td colspan="2">湿度:</td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
-        <td colspan="29"><strong>异常情况：</strong></td>
+        <td colspan="29"><strong>异常情况：<input type="text" id="qq" onchange="func(this,'ss');"><span
+                id="ss"></span></strong></td>
     </tr>
     </tbody>
 </table>
@@ -388,7 +388,7 @@
     <tbody>
     <tr class="odd">
         <td rowspan="49"><strong>项目6<br/>
-        <td colspan="6"><strong>巡检时间</strong>(HH:MM)</td>
+        <td colspan="6"><strong>巡检时间</strong>(HH:MM)<input type="time"></td>
         <td colspan="3"><strong>巡检项目</strong></td>
         <td colspan="3"><strong>主机房设备状态 巡检</strong></td>
     </tr>
@@ -400,289 +400,385 @@
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜01 1-1 存储</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender1" value="正常"/>正常<input type="radio" name="gender1"
+                                                                                        value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜07 PACS存储</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender2" value="正常"/>正常<input type="radio" name="gender2"
+                                                                                        value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜01 1-2 存储</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender3" value="正常"/>正常<input type="radio" name="gender3"
+                                                                                        value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜07 1.29冷备</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender4" value="正常"/>正常<input type="radio" name="gender4"
+                                                                                        value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜01 1-3 存储</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender5" value="正常"/>正常<input type="radio" name="gender5"
+                                                                                        value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜07 1.29 PACS</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender6" value="正常"/>正常<input type="radio" name="gender6"
+                                                                                        value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜01 1-4 存储</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender7" value="正常"/>正常<input type="radio" name="gender7"
+                                                                                        value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜07 1.32冷备</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender8" value="正常"/>正常<input type="radio" name="gender8"
+                                                                                        value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜01 1-5 存储</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender9" value="正常"/>正常<input type="radio" name="gender9"
+                                                                                        value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜07 1.32莱达web服务</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender10" value="正常"/>正常<input type="radio" name="gender10"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜01 1-11 服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender11" value="正常"/>正常<input type="radio" name="gender11"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜07 1.13冷备</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender12" value="正常"/>正常<input type="radio" name="gender12"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜01 1-12 服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender13" value="正常"/>正常<input type="radio" name="gender13"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜07 院内网</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender14" value="正常"/>正常<input type="radio" name="gender14"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜01 1-13 服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender15" value="正常"/>正常<input type="radio" name="gender15"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 NAS 存储1</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender16" value="正常"/>正常<input type="radio" name="gender16"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜02 超融合服务器1</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender17" value="正常"/>正常<input type="radio" name="gender17"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 NAS2 NETAPP</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender18" value="正常"/>正常<input type="radio" name="gender18"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜02 超融合服务器2</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender19" value="正常"/>正常<input type="radio" name="gender19"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 杏和LIS</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender20" value="正常"/>正常<input type="radio" name="gender20"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜02 超融合服务器3</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender21" value="正常"/>正常<input type="radio" name="gender21"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 连帆输液</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender22" value="正常"/>正常<input type="radio" name="gender22"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜02 超融合服务器4</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
-        <td colspan="4"><strong>机柜08
-            中文期刊、趋势杀毒、盈高桌面</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender23" value="正常"/>正常<input type="radio" name="gender23"
+                                                                                         value="异常"/>异常</strong></td>
+        <td colspan="4"><strong>机柜08 中文期刊、趋势杀毒、盈高桌面</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender24" value="正常"/>正常<input type="radio" name="gender24"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜02 虚拟化存储</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender25" value="正常"/>正常<input type="radio" name="gender25"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 医保前置机</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender26" value="正常"/>正常<input type="radio" name="gender26"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜02 血糖服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender27" value="正常"/>正常<input type="radio" name="gender27"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 老嘉禾服务器</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender28" value="正常"/>正常<input type="radio" name="gender28"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜02 安恒堡垒机</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender29" value="正常"/>正常<input type="radio" name="gender29"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 市民卡、健康卡前置机</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender30" value="正常"/>正常<input type="radio" name="gender30"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜03 G400 小机存储</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender31" value="正常"/>正常<input type="radio" name="gender31"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 卫计委万达前置机</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender32" value="正常"/>正常<input type="radio" name="gender32"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜03 容灾一体机</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender33" value="正常"/>正常<input type="radio" name="gender33"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 全国农保前置</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender34" value="正常"/>正常<input type="radio" name="gender34"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜03 老HIS服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender35" value="正常"/>正常<input type="radio" name="gender35"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜08 温岭四院影像前置</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender36" value="正常"/>正常<input type="radio" name="gender36"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜04 小机</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender37" value="正常"/>正常<input type="radio" name="gender37"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜10 10-1 核心交换机2</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender38" value="正常"/>正常<input type="radio" name="gender38"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜04 老HIS服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender39" value="正常"/>正常<input type="radio" name="gender39"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜10 10-2 应用负载服务器</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender40" value="正常"/>正常<input type="radio" name="gender40"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜04 X86容灾小机</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender41" value="正常"/>正常<input type="radio" name="gender41"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜10 10-3应用负载服务器</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender42" value="正常"/>正常<input type="radio" name="gender42"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜04 G400 小机存储</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender43" value="正常"/>正常<input type="radio" name="gender43"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜11 11-1 核心交换机1</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender44" value="正常"/>正常<input type="radio" name="gender44"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜05 医保测试服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender45" value="正常"/>正常<input type="radio" name="gender45"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜11 11-2 防火墙</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender46" value="正常"/>正常<input type="radio" name="gender46"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜05 医学文件检索</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender47" value="正常"/>正常<input type="radio" name="gender47"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜11 11-3 汇聚交换机</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender48" value="正常"/>正常<input type="radio" name="gender48"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜05 启明星辰日志审计</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender49" value="正常"/>正常<input type="radio" name="gender49"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜11 11-4 汇聚交换机</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender50" value="正常"/>正常<input type="radio" name="gender50"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜05 横渡防统方服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender51" value="正常"/>正常<input type="radio" name="gender51"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-1 准入</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender52" value="正常"/>正常<input type="radio" name="gender52"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜05 门诊药房发药机</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender53" value="正常"/>正常<input type="radio" name="gender53"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-2 MSTS设备</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender54" value="正常"/>正常<input type="radio" name="gender54"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜05 眼科医院容灾一体机</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender55" value="正常"/>正常<input type="radio" name="gender55"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-3 VPN设备</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender56" value="正常"/>正常<input type="radio" name="gender56"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜05 眼科医院医保前置机</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender57" value="正常"/>正常<input type="radio" name="gender57"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-4 日志管理1</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender58" value="正常"/>正常<input type="radio" name="gender58"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜05 云备姆一体机</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender59" value="正常"/>正常<input type="radio" name="gender59"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-5 日志管理2</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender60" value="正常"/>正常<input type="radio" name="gender60"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜06 清鹤电子大屏服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender61" value="正常"/>正常<input type="radio" name="gender61"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-6 IPS1</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender62" value="正常"/>正常<input type="radio" name="gender62"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜06 智慧医院IPTV服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender63" value="正常"/>正常<input type="radio" name="gender63"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-7 IPS2</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender64" value="正常"/>正常<input type="radio" name="gender64"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜06 眼科微脉服务器</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender65" value="正常"/>正常<input type="radio" name="gender65"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-8 网管设备</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender66" value="正常"/>正常<input type="radio" name="gender66"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜06 GE影像虚拟PACS存储</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender67" value="正常"/>正常<input type="radio" name="gender67"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-9 网银设备</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender68" value="正常"/>正常<input type="radio" name="gender68"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜06 GE影像虚拟PACS</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender69" value="正常"/>正常<input type="radio" name="gender69"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-10 全国农保</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender70" value="正常"/>正常<input type="radio" name="gender70"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜06 GE影像虚拟RIS</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender71" value="正常"/>正常<input type="radio" name="gender71"
+                                                                                         value="异常"/>异常<strong></td>
         <td colspan="4"><strong>机柜12 12-11 外网防火墙1</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender72" value="正常"/>正常<input type="radio" name="gender72"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜06 GE影像虚拟web</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender73" value="正常"/>正常<input type="radio" name="gender73"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜12 12-12 外网防火墙2</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender74" value="正常"/>正常<input type="radio" name="gender74"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>机柜06 上海肺科医院对接</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender75" value="正常"/>正常<input type="radio" name="gender75"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜13 信息中心办公室交换机1.2</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender76" value="正常"/>正常<input type="radio" name="gender76"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="3"><strong>机柜06 英特银联药房</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender77" value="正常"/>正常<input type="radio" name="gender77"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜14 防火墙、无线AP汇聚交换机</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender78" value="正常"/>正常<input type="radio" name="gender78"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td rowspan="3"><p><strong>温湿度探测器:</strong></p>
             <p><strong>机房温度：20°- 25°</strong></p>
             <p><strong>机房湿度50 - 70</strong></p></td>
         <td colspan="2"><strong>左边</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender79" value="正常"/>正常<input type="radio" name="gender79"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜15 PACS HNAS 控制终端</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender80" value="正常"/>正常<input type="radio" name="gender80"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td colspan="2"><strong>中间</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender81" value="正常"/>正常<input type="radio" name="gender81"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜15 PACS F350 NAS 存储</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender82" value="正常"/>正常<input type="radio" name="gender82"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
         <td colspan="2"><strong>右边</strong></td>
-        <td colspan="3"><strong>正常□ 异常□</strong></td>
+        <td colspan="3"><strong><input type="radio" name="gender83" value="正常"/>正常<input type="radio" name="gender83"
+                                                                                         value="异常"/>异常</strong></td>
         <td colspan="4"><strong>机柜15 PACS G11（1-4）对象存储</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender84" value="正常"/>正常<input type="radio" name="gender84"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="odd">
         <td></td>
         <td colspan="2"></td>
         <td colspan="3"></td>
         <td colspan="4"><strong>机柜15 PACS HCP对象终端</strong></td>
-        <td colspan="2"><strong>正常□ 异常□</strong></td>
+        <td colspan="2"><strong><input type="radio" name="gender85" value="正常"/>正常<input type="radio" name="gender85"
+                                                                                         value="异常"/>异常</strong></td>
     </tr>
     <tr class="even">
-        <td colspan="4"><strong>美的空调：（本周是否开放：是□
-            否□）</strong></td>
-        <td colspan="3"></td>
-        <td colspan="4"><strong>海信空调：（本周是否开放：是□
-            否□）</strong></td>
-        <td></td>
+        <td colspan="4"><strong>美的空调：
+            <p><strong>(本周是否开放：
+                <input type="radio" name="a3" value="是"/>是
+                <input type="radio" name="a3" value="否"/>否
+                ）
+            </strong></p>
+        <td colspan="3"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></td>
+        <td colspan="4"><p><strong>海信空调：</strong></p>
+            <p><strong>(本周是否开放：
+                <input type="radio" name="a2" value="是"/>是
+                <input type="radio" name="a2" value="否"/>否
+                ）
+            </strong></p>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></td>
     </tr>
     <tr class="odd">
         <td colspan="2" rowspan="2"><p><strong>新精密空调：</strong></p>
-            <p><strong>(本周是否开放：是□ 否□)</strong></p></td>
+            <p><strong>(本周是否开放：
+                <input type="radio" name="a1" value="是"/>是
+                <input type="radio" name="a1" value="否"/>否
+                ）
+            </strong></p>
         <td colspan="3"><strong>室内温度:</strong></td>
-        <td colspan="2"><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td colspan="2"><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
         <td rowspan="2"><p><strong>老精密空调：</strong></p>
             <p><strong>(本周是否开放：
-                <input type="radio" name="gender" value="是"/>是
-                <input type="radio" name="gender" value="否"/>否
+                <input type="radio" name="a" value="是"/>是
+                <input type="radio" name="a" value="否"/>否
                 ）
             </strong></p>
         </td>
         <td colspan="3"><strong>室内温度:</strong></td>
-        <td><input id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
+        <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="even">
         <td colspan="3"><strong>室内湿度:</strong></td>
@@ -691,7 +787,8 @@
         <td><input type="text" id="qq" onchange="func(this,'ss');"><span id="ss"></span></td>
     </tr>
     <tr class="odd">
-        <td colspan="12"><strong>异常情况：</strong></td>
+        <td colspan="12"><strong>异常情况：<input type="text" id="qq" onchange="func(this,'ss');"><span
+                id="ss"></span></strong></td>
     </tr>
     </tbody>
 </table>
