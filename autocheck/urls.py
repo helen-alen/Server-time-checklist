@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from auto01 import views
+from auto01.views import index
+from auto01.views import topdf
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.login),
+    path('index/', views.index),
+    path('topdf/', views.topdf),
+    path('', index),
 ]

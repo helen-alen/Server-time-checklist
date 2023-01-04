@@ -976,16 +976,18 @@
     </tr>
     </tbody>
 </table>
-<input type=button style="height:50px;width:1600px" value=保存页面 onclick="document.execCommand('SaveAs',true,title);">
-<script>
-    $(document).execCommand(function () {
-        {#// 显示默认日期#}
-        {#var time = new Date();#}
-        {#var day = ("0" + time.getDate()).slice(-2);#}
-        {#var month = ("0" + (time.getMonth() + 1)).slice(-2);#}
-        {#var today = time.getFullYear() + "-" + (month) + "-" + (day);#}
-        {#$('#currentDate').val(today);#}
-    })
-</script>
+<form action="/index/" method="post">
+    <p><input type="button" style="height:50px;width:1600px" value="保存页面"><p>
+    <ul></ul>>
+</form>
 </body>
+<script>
+    $(function ()){
+        $('#btnpdf').click(function(){
+            $.get('/auto01/topdf',function()){
+
+            }
+        })
+    }
+</script>
 </html>
