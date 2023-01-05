@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from auto01 import views
 from auto01.views import index
-from auto01.views import topdf
+from auto01.views import pdf_download
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', views.index),
-    path('topdf/', views.topdf),
+    path('index', views.index),
+    path('pdf_download', views.pdf_download),
     path('', index),
 ]

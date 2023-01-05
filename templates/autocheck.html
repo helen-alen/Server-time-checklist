@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>信息处每日巡检表</title>
+    {% load static %}
     <style>
         body {
             zoom: 0.8;
@@ -976,18 +977,12 @@
     </tr>
     </tbody>
 </table>
-<form action="/index/" method="post">
-    <p><input type="button" style="height:50px;width:1600px" value="保存页面"><p>
-    <ul></ul>>
-</form>
+<input id="download" type="button" style="height:50px;width:1600px" value="保存页面">
 </body>
+<script src="{% static 'index/js/jquery.min.js' %}"></script>
 <script>
-    $(function ()){
-        $('#btnpdf').click(function(){
-            $.get('/auto01/topdf',function()){
-
-            }
-        })
-    }
+    $('#download').click(function () {
+        location.href = '/pdf_download';
+    })
 </script>
 </html>
