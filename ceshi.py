@@ -2,7 +2,9 @@ import pdfkit
 import datetime
 import time
 import os
-import PyPDF2
+
+
+print("{%url 'auto01:pdf_download' %}")
 
 # i = datetime.datetime.now().strftime('%Y-%m-%d')
 # localfile = './allpdf/' + str(i) + '.pdf'
