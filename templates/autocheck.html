@@ -960,12 +960,26 @@
     </tr>
     </tbody>
 </table>
-<input id="download" type="button" style="height:50px;width:1600px" value="保存页面">
+<input id="download" type="button" style="height:50px;width:1600px" value="" onclick="login()">
 </body>
 <script src="{% static 'jquery-3.5.1.min.js' %}"></script>
 <script>
     $('#download').click(function () {
         location.href = '/pdf_download';
     })
+
+    function login() {
+        var username = document.getElementById('project6').value;
+        alert(username);
+    }
 </script>
+{#<script>#}
+{#    //通过button按钮的id获取点击事件#}
+{#    document.getElementById("download").onclick = function () {#}
+{#        if (this.value === "保存页面") {#}
+{#            document.getElementById("download").style.display = "none";#}
+{#        }#}
+{#    };#}
+{#</script>#}
+
 </html>
