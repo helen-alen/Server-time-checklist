@@ -17,10 +17,14 @@ def pdf_download(request):
     localfile = './allpdf/' + str(i) + '.pdf'
     options = {
         'encoding': "utf-8",
-        # 'javascript-delay': '1000',  # 添加页面延时js执行时间段 echarts
+        "enable-local-file-access": '--enable-local-file-access',
+        'javascript-delay': '1000',  # 添加页面延时js执行时间段 echarts
     }
+    url = 'http://127.0.0.1:8000/'
+    # position = './templates/autocheck.html'
     config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
-    pdfkit.from_file('./templates/autocheck.html', localfile, configuration=config, options=options)
+    pdfkit.from_url(url, localfile, configuration=config, options=options)
+    # pdfkit.from_file(position, localfile, configuration=config, options=options)
     file = open(localfile, 'rb')
     try:
         response = FileResponse(file)

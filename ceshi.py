@@ -4,7 +4,6 @@ import time
 import os
 
 
-print("{%url 'auto01:pdf_download' %}")
 
 # i = datetime.datetime.now().strftime('%Y-%m-%d')
 # localfile = './allpdf/' + str(i) + '.pdf'

@@ -21,7 +21,7 @@ from auto01.views import pdf_download
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', views.index),
-    path('pdf_download', views.pdf_download),
+    path('index/', views.index),
+    path('pdf_download/', views.pdf_download),
     path('', index),
 ]
