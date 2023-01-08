@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
     path('pdf_download/', views.pdf_download),
+    path('test/', views.test),
     path('', index),
 ]
