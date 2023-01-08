@@ -955,20 +955,24 @@
         </tr>
         </tbody>
     </table>
-    <input id="download" type="button" style="height:50px;width:1600px" value="">
+    <input id="download" type="button" style="height:50px;width:1600px" value="点击打印" onclick="printpage()">
 </form>
 </body>
 <script src="{% static 'jquery-3.5.1.min.js' %}"></script>
 <script type="text/javascript">
-    $('#download').click(function () {
+    //$('#download').click(function () {
         {#location.href = '/pdf_download';#}
-        url = "example"
+        //url = "example"
 
-        console.log($('#form').serialize())
+        //console.log($('#form').serialize())
 
-        $.post(url, $('#form').serialize(), function (data) {
-            console.log(data);
-        }, "json")
-    })
+        //$.post(url, $('#form').serialize(), function (data) {
+        //    console.log(data);
+        // }, "json")
+
+    //})
+    function printpage() {
+        window.print()
+    }
 </script>
 </html>

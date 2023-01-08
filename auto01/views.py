@@ -35,6 +35,7 @@ def pdf_download(request):
     except Exception:
         raise Http404("文件获取异常！")
 
+
 def test(request):
     if request.is_ajax():
         data=request.POST
