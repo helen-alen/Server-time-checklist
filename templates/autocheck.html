@@ -963,6 +963,9 @@
     $('#download').click(function () {
         {#location.href = '/pdf_download';#}
         url = "example"
+
+        console.log($('#form').serialize())
+
         $.post(url, $('#form').serialize(), function (data) {
             console.log(data);
         }, "json")
