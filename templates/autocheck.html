@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>信息处每日巡检表</title>
+    <title >信息处每日巡检表</title>
     {% load static %}
     <style>
         body {
@@ -16,13 +16,13 @@
 <form method="post" id="form">
     {% csrf_token %}
     <table border="1" align="center">
-        <caption font-size:100%>信息处每日巡检表</caption>
+        <caption style="font-size: 23px;">信息处每日巡检表</caption>
         <colgroup>
             <col style="width: 100%"/>
         </colgroup>
         <tbody>
         <tr class="">
-            <td>巡检日期：<input type="date" id="currentDate"></td>
+            <td>巡检日期：<input type="date" id="currentDate" style="width: 100px;height: 50px"></td>
         </tr>
         </tbody>
     </table>
@@ -38,7 +38,7 @@
         <tbody>
         <tr class="">
             <td rowspan="5"><p><strong>项目1</strong></p></td>
-            <td colspan="2"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time1"></td>
+            <td colspan="2"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time1" style="width: 100px;height: 30px"></td>
             <td colspan="2"><strong>巡检项目</strong></td>
             <td colspan="2"><strong>虚拟化平台巡检</strong></td>
         </tr>
@@ -78,7 +78,7 @@
         <tbody>
         <tr class="">
             <td rowspan="3"><strong>项目2<br/>
-            <td><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time2"></td>
+            <td><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time2" style="width: 100px;height: 30px"></td>
             <td><strong>巡检项目</strong></td>
             <td colspan="2"><strong>PACS NAS 服务器105.22</strong></td>
         </tr>
@@ -107,7 +107,7 @@
         <tbody>
         <tr class="">
             <td rowspan="3"><strong>项目3</strong></td>
-            <td colspan="2"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time3"></td>
+            <td colspan="2"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time3" style="width: 100px;height: 30px"></td>
             <td><strong>巡检项目</strong></td>
             <td><strong>防统方 巡检 100.197</strong></td>
         </tr>
@@ -136,7 +136,7 @@
         <tbody>
         <tr class="">
             <td rowspan="7"><strong>项目4</strong></td>
-            <td colspan="3"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time4"></td>
+            <td colspan="3"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time4" style="width: 100px;height: 30px"></td>
             <td><strong>巡检项目</strong></td>
             <td colspan="2"><strong>日常网络安全监测 巡检</strong></td>
         </tr>
@@ -211,7 +211,7 @@
         <tbody>
         <tr class="">
             <td rowspan="15"><p><strong>项目5</strong></p>
-            <td colspan="6"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time5"></td>
+            <td colspan="6"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time5" style="width: 100px;height: 30px"></td>
             <td colspan="3"><strong>巡检项目</strong></td>
             <td colspan="5"><strong>新科士达 UPS巡检</strong></td>
         </tr>
@@ -225,32 +225,32 @@
         </tr>
         <tr class="">
             <td>RS</td>
-            <td colspan="1"><input type="text" id="5.1"></td>
-            <td colspan="1"><input type="text" id="5.2"></td>
+            <td colspan="1"><input type="number" id="5.1"></td>
+            <td colspan="1"><input type="number" id="5.2"></td>
             <td colspan="1">R</td>
-            <td colspan="1"><input type="text" id="5.3"></td>
-            <td colspan="1"><input type="text" id="5.4"></td>
+            <td colspan="1"><input type="number" id="5.3"></td>
+            <td colspan="1"><input type="number" id="5.4"></td>
             <td colspan="3">电池电压：</td>
-            <td colspan="4"><input type="text" id="5.5"></td>
+            <td colspan="4"><input type="number" id="5.5"></td>
 
         </tr>
         <tr class="">
             <td>ST</td>
-            <td colspan="1"><input type="text" id="5.6"></td>
-            <td colspan="1"><input type="text" id="5.7"></td>
+            <td colspan="1"><input type="number" id="5.6"></td>
+            <td colspan="1"><input type="number" id="5.7"></td>
             <td colspan="1">S</td>
-            <td colspan="1"><input type="text" id="5.8"></td>
-            <td colspan="1"><input type="text" id="5.9"></td>
+            <td colspan="1"><input type="number" id="5.8"></td>
+            <td colspan="1"><input type="number" id="5.9"></td>
             <td colspan="3">电池电流：</td>
-            <td colspan="4"><input type="text" id="5.10"></td>
+            <td colspan="4"><input type="number" id="5.10"></td>
         </tr>
         <tr class="">
             <td>TR</td>
-            <td colspan="1"><input type="text" id="5.11"></td>
-            <td colspan="1"><input type="text" id="5.12"></td>
+            <td colspan="1"><input type="number" id="5.11"></td>
+            <td colspan="1"><input type="number" id="5.12"></td>
             <td colspan="1">T</td>
-            <td colspan="1"><input type="text" id="5.13"></td>
-            <td colspan="1"><input type="text" id="5.14"></td>
+            <td colspan="1"><input type="number" id="5.13"></td>
+            <td colspan="1"><input type="number" id="5.14"></td>
             <td colspan="3">是否正在充电</td>
             <td colspan="4"><input type="radio" name="c" value="是" checked/>是<input type="radio" name="c" value="否"/>否
             </td>
@@ -271,48 +271,48 @@
         </tr>
         <tr class="">
             <td>R</td>
-            <td colspan="1"><input type="text" id="5.15"></td>
-            <td colspan="1"><input type="text" id="5.16"></td>
+            <td colspan="1"><input type="number" id="5.15"></td>
+            <td colspan="1"><input type="number" id="5.16"></td>
             <td colspan="1">RS</td>
-            <td colspan="1"><input type="text" id="5.17"></td>
-            <td colspan="1"><input type="text" id="5.18"></td>
+            <td colspan="1"><input type="number" id="5.17"></td>
+            <td colspan="1"><input type="number" id="5.18"></td>
             <td colspan="1">R</td>
-            <td colspan="2"><input type="text" id="5.19"></td>
-            <td colspan="1"><input type="text" id="5.20"></td>
+            <td colspan="2"><input type="number" id="5.19"></td>
+            <td colspan="1"><input type="number" id="5.20"></td>
             <td colspan="1">R</td>
-            <td colspan="1"><input type="text" id="5.21"></td>
-            <td colspan="1"><input type="text" id="5.22"></td>
+            <td colspan="1"><input type="number" id="5.21"></td>
+            <td colspan="1"><input type="number" id="5.22"></td>
         </tr>
         <tr class="">
             <td>S</td>
-            <td colspan="1"><input type="text" id="5.23"></td>
-            <td colspan="1"><input type="text" id="5.24"></td>
+            <td colspan="1"><input type="number" id="5.23"></td>
+            <td colspan="1"><input type="number" id="5.24"></td>
             <td colspan="1">ST</td>
-            <td colspan="1"><input type="text" id="5.25"></td>
-            <td colspan="1"><input type="text" id="5.26"></td>
+            <td colspan="1"><input type="number" id="5.25"></td>
+            <td colspan="1"><input type="number" id="5.26"></td>
             <td colspan="1">S</td>
-            <td colspan="2"><input type="text" id="5.27"></td>
-            <td colspan="1"><input type="text" id="5.28"></td>
+            <td colspan="2"><input type="number" id="5.27"></td>
+            <td colspan="1"><input type="number" id="5.28"></td>
             <td colspan="1">S</td>
-            <td colspan="1"><input type="text" id="5.29"></td>
-            <td colspan="1"><input type="text" id="5.30"></td>
+            <td colspan="1"><input type="number" id="5.29"></td>
+            <td colspan="1"><input type="number" id="5.30"></td>
         </tr>
         <tr class="">
             <td>T</td>
-            <td colspan="1"><input type="text" id="5.31"></td>
-            <td colspan="1"><input type="text" id="5.32"></td>
+            <td colspan="1"><input type="number" id="5.31"></td>
+            <td colspan="1"><input type="number" id="5.32"></td>
             <td colspan="1">TR</td>
-            <td colspan="1"><input type="text" id="5.33"></td>
-            <td colspan="1"><input type="text" id="5.34"></td>
+            <td colspan="1"><input type="number" id="5.33"></td>
+            <td colspan="1"><input type="number" id="5.34"></td>
             <td colspan="1">T</td>
-            <td colspan="2"><input type="text" id="5.35"></td>
-            <td colspan="1"><input type="text" id="5.36"></td>
+            <td colspan="2"><input type="number" id="5.35"></td>
+            <td colspan="1"><input type="number" id="5.36"></td>
             <td colspan="1">T</td>
-            <td colspan="1"><input type="text" id="5.37"></td>
-            <td colspan="1"><input type="text" id="5.38"></td>
+            <td colspan="1"><input type="number" id="5.37"></td>
+            <td colspan="1"><input type="number" id="5.38"></td>
         </tr>
         <tr class="">
-            <td colspan="6"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time5.1"></td>
+            <td colspan="6"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time5.1" style="width: 100px;height: 30px"></td>
             <td colspan="3"><strong>巡检项目</strong></td>
             <td colspan="4"><strong>科士达 UPS巡检</strong></td>
         </tr>
@@ -322,7 +322,7 @@
             <td colspan="1">输出电流:</td>
             <td colspan="1"><input type="text" id="5.40"></td>
             <td colspan="2">频率:</td>
-            <td colspan="2"><input type="text" id="5.41"></td>
+            <td colspan="2"><input type="number" id="5.41"></td>
             <td colspan="2">负载:</td>
             <td colspan="1"><input type="text" id="5.42"></td>
         </tr>
@@ -332,29 +332,48 @@
             <td colspan="1">输入电流:</td>
             <td colspan="1"><input type="text" id="5.44"></td>
             <td colspan="2">频率:</td>
-            <td colspan="2"><input type="text" id="5.45"></td>
+            <td colspan="2"><input type="number" id="5.45"></td>
             <td colspan="2">旁路电压:</td>
             <td colspan="1"><input type="text" id="5.46"></td>
         </tr>
         <tr class="">
             <td colspan="2">正电池电压:</td>
-            <td colspan="2"><input type="text" id="5.47"></td>
+            <td colspan="2"><input type="number" id="5.47"></td>
             <td colspan="1">负电池电压:</td>
-            <td colspan="1"><input type="text" id="5.48"></td>
+            <td colspan="1"><input type="number" id="5.48"></td>
             <td colspan="2">有无err日志:</td>
-            <td colspan="2"><input type="text" id="5.49"></td>
+            <td colspan="2">
+                <select id="5.49">
+                    <option>无</option>
+                    <option>有</option>
+                </select>
+            </td>
             <td colspan="2">空调:</td>
-            <td colspan="1"><input type="text" id="5.50"></td>
+            <td colspan="1"><input type="number" id="5.50"></td>
         </tr>
         <tr class="">
             <td colspan="2">模块1:</td>
-            <td colspan="2"><input type="text" id="5.51"></td>
+            <td colspan="2">
+                <select id="5.51">
+                    <option>在线</option>
+                    <option>不在线</option>
+                </select>
             <td colspan="1">模块2:</td>
-            <td colspan="1"><input type="text" id="5.52"></td>
+            <td colspan="1">
+                <select id="5.52">
+                    <option>在线</option>
+                    <option>不在线</option>
+                </select>
+            </td>
             <td colspan="2">模块3:</td>
-            <td colspan="2"><input type="text" id="5.53"></td>
+            <td colspan="2">
+                <select id="5.53">
+                    <option>在线</option>
+                    <option>不在线</option>
+                </select>
+            </td>
             <td colspan="2">湿度:</td>
-            <td colspan="1"><input type="text" id="5.54"></td>
+            <td colspan="1"><input type="number" id="5.54"></td>
         </tr>
         <tr class="">
             <td colspan="15"><strong>异常情况：<input type="text" style="height:25px;width:1000px" id="project5"></strong>
@@ -381,7 +400,7 @@
         <tbody>
         <tr class="">
             <td rowspan="49"><strong>项目6<br/>
-            <td colspan="6"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time6"></td>
+            <td colspan="6"><strong>巡检时间</strong>(HH:MM)<input type="time" id="Patrol inspection time6" style="width: 100px;height: 30px"></td>
             <td colspan="3"><strong>巡检项目</strong></td>
             <td colspan="3"><strong>主机房设备状态 巡检</strong></td>
         </tr>
@@ -915,14 +934,14 @@
                     <input type="radio" name="a3" value="否" checked/>否
                     ）
                 </strong></p>
-            <td colspan="3"><input type="text" id="6.1"></td>
+            <td colspan="3"><input type="number" id="6.1"></td>
             <td colspan="4"><p><strong>海信空调：</strong></p>
                 <p><strong>(本周是否开放：
                     <input type="radio" name="a2" value="是" checked/>是
                     <input type="radio" name="a2" value="否"/>否
                     ）
                 </strong></p>
-            <td><input type="text" id="6.2"></td>
+            <td><input type="number" id="6.2"></td>
         </tr>
         <tr class="">
             <td colspan="2" rowspan="2"><p><strong>新精密空调：</strong></p>
@@ -932,7 +951,7 @@
                     ）
                 </strong></p>
             <td colspan="3"><strong>室内温度:</strong></td>
-            <td colspan="2"><input type="text" id="6.3"></td>
+            <td colspan="2"><input type="number" id="6.3"></td>
             <td rowspan="2"><p><strong>老精密空调：</strong></p>
                 <p><strong>(本周是否开放：
                     <input type="radio" name="a" value="是" checked/>是
@@ -941,13 +960,13 @@
                 </strong></p>
             </td>
             <td colspan="3"><strong>室内温度:</strong></td>
-            <td><input type="text" id="6.4"></td>
+            <td><input type="number" id="6.4"></td>
         </tr>
         <tr class="">
             <td colspan="3"><strong>室内湿度:</strong></td>
-            <td colspan="2"><input type="text" id="6.5"></td>
+            <td colspan="2"><input type="number" id="6.5"></td>
             <td colspan="3"><strong>室内湿度:</strong></td>
-            <td><input type="text" id="6.6"></td>
+            <td><input type="number" id="6.6"></td>
         </tr>
         <tr class="">
             <td colspan="12"><strong>异常情况：<input type="text" style="height:25px;width:1000px" id="project6"></strong>
@@ -955,26 +974,42 @@
         </tr>
         </tbody>
     </table>
-    <input id="download" type="button" style="height:50px;width:1600px" value="点击打印" onclick="printpage()">
+    <input id="download" type="button" style="height:50px;width:1600px" value="点击生成pdf" onclick="printpage()">
 </form>
 </body>
 <script src="{% static 'jquery-3.5.1.min.js' %}"></script>
 <script type="text/javascript">
     //$('#download').click(function () {
-        {#location.href = '/pdf_download';#}
-        //url = "test"
+    {#location.href = '/pdf_download';#}
+    //url = "test"
 
-        //console.log($('#form').serialize())
+    //console.log($('#form').serialize())
 
-        //$.post(url, $('#form').serialize(), function (data) {
-        //    console.log(data);
-        // }, "json")
+    //$.post(url, $('#form').serialize(), function (data) {
+    //    console.log(data);
+    // }, "json")
 
     //})
-   function printpage() {
+
+
+    $(document).ready(function () {
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        var today = year + "-" + month + "-" + day;
+        $("#currentDate").attr("value", today);
+    });
+
+    function printpage() {
         document.getElementById("download").style.display = "none";
         window.print()
-        setTimeout( document.getElementById("download").style.display ="block",1000);
+        setTimeout(document.getElementById("download").style.display = "block", 1000);
     }
 </script>
 </html>

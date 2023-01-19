@@ -1,3 +1,3 @@
 import os
-os.system('manage.exe runserver 8001 --noreload')
+os.system('manage.exe runserver 8009 --noreload')
 input()
