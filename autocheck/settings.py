@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'auto01'
+    'server_time_checklist'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'autocheck.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'server_time_checklist_data',  # 数据库名
+        'USER': 'root',  # 登录用户名
+        'PASSWORD': 'zhl1555769',  # 登录密码
+        'HOST': 'localhost',  # 数据库主机
+        'PORT': '3306',  # 数据库端口
     }
 }
 

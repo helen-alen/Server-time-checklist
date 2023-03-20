@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from auto01 import views
-from auto01.views import index
-from auto01.views import pdf_download
+from server_time_checklist import views
+from server_time_checklist.views import server_time_checklist
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', views.index),
-    path('pdf_download/', views.pdf_download),
-    path('test/', views.test),
-    path('', index),
+    path('server_time_checklist/', views.server_time_checklist),
+    path('', server_time_checklist),
+    path('update_server_time_checklist/',views.update_server_time_checklist),
+    path('updatechecklist_page/',views.updatechecklist_page,name='updatechecklist_page')
 ]

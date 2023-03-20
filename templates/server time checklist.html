@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择检查时间</title>
+    <meta charset="utf-8">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        {#function showTable() {#}
+        {#    // 获取选择的日期#}
+        {#    var date = document.getElementById("date").value;#}
+        {#    // 构造表格#}
+        {#var table = "<table>";#}
+        {#table += "<thead><tr><th>序号</th><th>资产IP</th><th>服务器名称</th><th>时间是否同步</th><th>核对时间</th><th>是否已调整</th><th>检查人</th></tr></thead>";#}
+        {#table += "<tbody><tr>{{ serverdates.asset_ip}}-{{ serverdates.server_name}}-{{ serverdates.time_synced}}-{{ serverdates.check_time}}-{{ serverdates.is_adjusted}}-{{ serverdates.checked_by}}</tr></tbody>";#}
+        {#table += "</table>";#}
+        {#    // 显示表格#}
+        {#    document.getElementById("tableContainer").innerHTML = table;#}
+        const form = document.getElementById('myForm');
+        form.addEventListener('button', function (event) {
+            event.preventDefault();
+            const dateInput = document.getElementById('dateInput');
+            const selectedDate = dateInput.value;
+            const url = `updatechecklist.html?selectedDate=${selectedDate}`;
+            window.location.href = url;
+        });
+    </script>
+</head>
+<body>
+<form id="myForm">
+    <label for="dateInput">Select a date:</label>
+    <input type="date" id="dateInput" name="dateInput">
+    <button type="button" onclick="window.location.href='/updatechecklist_page/'">Submit</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务器时间检查表</title>
+    <script>
+        function printpage() {
+            document.getElementById("download").style.display = "none";
+            window.print()
+            setTimeout(document.getElementById("download").style.display = "block", 1000);
+        }
+
+        {#const queryString = window.location.search;#}
+        {#const urlParams = new URLSearchParams(queryString);#}
+        {#const selectedDate = urlParams.get('selectedDate');#}
+
+
+    </script>
+</head>
+<body>
+1231564654
+<form method="post" action="{% url 'update_server_time_checklist' %}">
+    {% csrf_token %}
+    <table>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>资产IP</th>
+            <th>服务器名称</th>
+            <th>时间是否同步</th>
+            <th>核对时间</th>
+            <th>是否已调整</th>
+            <th>检查人</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for serverdates in serverdate %}
+            <tr>
+                <td>{{ serverdates.id }}</td>
+                <td>{{ serverdates.asset_ip }}</td>
+                <td>{{ serverdates.server_name }}</td>
+                <td><input type="text" name="time_synced" value="{{ serverdates.time_synced }}"></td>
+                <td><input type="text" name="check_time" value="{{ serverdates.check_time }}"></td>
+                <td><input type="text" name="is_adjusted" value="{{ serverdates.is_adjusted }}"></td>
+                <td><input type="text" name="checked_by" value="{{ serverdates.checked_by }}"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <input id="download" type="button" style="height:50px;width:500px" value="点击生成pdf" onclick="printpage()">
+</form>
+
+</body>
+</html>
+
