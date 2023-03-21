@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from server_time_checklist import views
 from server_time_checklist.views import server_time_checklist
+from server_time_checklist.views import updatechecklist_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('server_time_checklist/', views.server_time_checklist),
     path('', server_time_checklist),
-    path('update_server_time_checklist/',views.update_server_time_checklist),
-    path('updatechecklist_page/',views.updatechecklist_page,name='updatechecklist_page')
+    path('updatechecklist_page/<str:selectedDate>', views.updatechecklist_page,name='updatechecklist_page'),
 ]

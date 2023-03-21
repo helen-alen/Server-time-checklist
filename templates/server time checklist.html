@@ -24,21 +24,26 @@
         {#table += "</table>";#}
         {#    // 显示表格#}
         {#    document.getElementById("tableContainer").innerHTML = table;#}
-        const form = document.getElementById('myForm');
-        form.addEventListener('button', function (event) {
-            event.preventDefault();
-            const dateInput = document.getElementById('dateInput');
-            const selectedDate = dateInput.value;
-            const url = `updatechecklist.html?selectedDate=${selectedDate}`;
-            window.location.href = url;
-        });
+
+        function jump() {
+            const form = document.getElementById('myForm');
+            form.addEventListener('click', function (event) {
+                event.preventDefault();
+                const dateInput = document.getElementById('dateInput');
+                const selectedDate = dateInput.value;
+                const url = `updatechecklist_page/selectedDate=${selectedDate}`;
+                {#selectedDate=${selectedDate}#}
+                window.location.href = url;
+            });
+        }
+
     </script>
 </head>
 <body>
-<form id="myForm">
+<form id="myForm" method="get">
     <label for="dateInput">Select a date:</label>
     <input type="date" id="dateInput" name="dateInput">
-    <button type="button" onclick="window.location.href='/updatechecklist_page/'">Submit</button>
+    <button type="button" onclick="jump()">Submit</button>
 </form>
 </body>
 </html>

@@ -7,21 +7,24 @@
     <title>服务器时间检查表</title>
     <script>
         function printpage() {
+            const submitButton = document.getElementById("download");
+            submitButton.addEventListener("click", function (event) {
+                event.preventDefault();
+                const form = document.getElementById("myForm");
+                const formData = new FormData(form);
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/updatechecklist");
+                xhr.send(formData);
+            });
             document.getElementById("download").style.display = "none";
             window.print()
             setTimeout(document.getElementById("download").style.display = "block", 1000);
         }
-
-        {#const queryString = window.location.search;#}
-        {#const urlParams = new URLSearchParams(queryString);#}
-        {#const selectedDate = urlParams.get('selectedDate');#}
-
-
     </script>
 </head>
 <body>
-1231564654
-<form method="post" action="{% url 'update_server_time_checklist' %}">
+123456
+<form id="myForm" method="post" action="">
     {% csrf_token %}
     <table>
         <thead>
@@ -36,22 +39,32 @@
         </tr>
         </thead>
         <tbody>
-        {% for serverdates in serverdate %}
+        {% for forms in form %}
             <tr>
-                <td>{{ serverdates.id }}</td>
-                <td>{{ serverdates.asset_ip }}</td>
-                <td>{{ serverdates.server_name }}</td>
-                <td><input type="text" name="time_synced" value="{{ serverdates.time_synced }}"></td>
-                <td><input type="text" name="check_time" value="{{ serverdates.check_time }}"></td>
-                <td><input type="text" name="is_adjusted" value="{{ serverdates.is_adjusted }}"></td>
-                <td><input type="text" name="checked_by" value="{{ serverdates.checked_by }}"></td>
+                <td>{{ forms.id }}</td>
+                <td>{{ forms.asset_ip }}</td>
+                <td>{{ forms.server_name }}</td>
+                <td>
+                    <select name="time_synced" value="{{ forms.time_synced }}">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </td>
+                <td><input type="date" name="check_time" value="{{ forms.check_time }}"></td>
+                <td>
+                    <select name="is_adjusted" value="{{ forms.is_adjusted }}">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </td>
+{#                <td><input type="text" name="is_adjusted" value="{{ forms.is_adjusted }}"></td>#}
+                <td><input type="text" name="checked_by" value="{{ forms.checked_by }}"></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     <input id="download" type="button" style="height:50px;width:500px" value="点击生成pdf" onclick="printpage()">
 </form>
-
 </body>
 </html>
 
