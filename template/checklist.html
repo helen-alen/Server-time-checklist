@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务器时间检查后的表格</title>
+    <style>
+        .my-table {
+            border-collapse: collapse; /*合并边框*/
+        {#border: 1px solid #ddd; /*设置边框*/#}{#table-layout: auto;#} width: 100%;
+        }
+
+        .my-table th, .my-table td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd; /*设置边框*/
+            width: 20%;
+            overflow: hidden; /*隐藏溢出部分*/
+            white-space: nowrap; /*禁止换行*/
+            text-overflow: ellipsis; /*用省略号代替溢出部分*/
+        }
+
+        .my-table td:first-child {
+            width: 50px; /*设置宽度*/
+        }
+
+        .my-table th:last-child, .my-table td:last-child {
+            border-right: none;
+        }
+
+        .my-table tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+    <script>
+        function printpage() {
+            document.getElementById("download").style.display = "none";
+            document.getElementById("back").style.display = "none";
+            window.print()
+            setTimeout(document.getElementById("download").style.display = "block", 1000);
+            setTimeout(document.getElementById("back").style.display = "block", 1000);
+        }
+        function dis(){
+
+        }
+    </script>
+</head>
+<body>
+<title text-align="center">服务器时间表格</title>
+<table class="my-table">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>资产IP</th>
+        <th>服务器名称</th>
+        <th>时间是否同步</th>
+        <th>核对时间</th>
+        <th>是否已调整</th>
+        <th>检查人</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for data in checklist_data %}
+        <tr>
+            <td>{{ data.id }}</td>
+            <td>{{ data.asset_ip }}</td>
+            <td>{{ data.server_name }}</td>
+            <td>
+                {% if data.time_synced == True %}
+                    是
+                {% else %}
+                    否
+                {% endif %}
+            </td>
+            <td>{{ data.check_time }}</td>
+            <td>
+                {% if data.is_adjusted == True %}
+                    是
+                {% else %}
+                    否
+                {% endif %}
+            </td>
+            <td>{{ data.checked_by }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<input id="download" type="button" style="height:50px;width:500px" value="点击生成pdf" onclick="printpage()">
+<a id="back" href="javascript:history.back() " onclick="dis()">返回</a>
+</body>
+</html>

@@ -7,7 +7,7 @@ import os
 # localfile = './allpdf/' + str(i) + '.pdf'
 # # localfile1='./allpdf/'+str(i)+'.pdf'
 # # config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
-# # pdfkit.from_file('./templates/autocheck.html',localfile, configuration=config)
+# # pdfkit.from_file('./template/autocheck.html',localfile, configuration=config)
 # print(i)
 # print(localfile)
 # desktop_path = os.path.join(os.path.expanduser('~'), "Desktop")

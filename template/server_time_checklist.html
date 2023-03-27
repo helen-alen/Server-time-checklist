@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选择检查时间</title>
+    <meta charset="utf-8">
+    <style>
+        #selected_time {
+            background-color: #f5efef;
+        }
+
+        .date-input {
+            border: 2px solid #100f0f;
+            padding: 5px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 或者可以设置一个固定的高度 */
+            background-color: #f6f2f2;
+            box-shadow: 0 2px 4px rgb(16, 15, 15);
+        }
+
+        .link-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            background-color: #f6f2f2;
+            box-shadow: 0 2px 4px rgb(16, 15, 15);
+        }
+
+        .link-container a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        button[type=submit] {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+<div class="form-container">
+    <form id="myForm" action="{% url 'time_select' %}" method="POST">
+        {% csrf_token %}
+        <label for="selected_time">选择服务器检查时间:</label>
+        <input type="date" id="selected_time" name="selected_time" class="date-input">
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<div class="link-container">
+    <a href="http://192.168.101.130:12233/">跳转到每日巡检页面</a>
+</div>
+</body>
+</html>
