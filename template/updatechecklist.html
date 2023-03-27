@@ -35,14 +35,22 @@
     </style>
     <script>
         function checkSelection() {
-            var selectBoxes = document.getElementsByName("forms");
-            for (var i = 0; i < selectBoxes.length; i++) {
-                var selectBox = selectBoxes[i];
-                var selectedOption = selectBox.options[selectBox.selectedIndex];
-                if (selectedOption.value == "") {
-                    alert("请选择是或否");
-                    return false; // 阻止提交
-                }
+            try {
+                const form = document.getElementById("myForm");
+                form.addEventListener("submit", function (event) {
+                    const selectBoxes = Array.from(document.getElementsByName("forms"));
+                    for (let i = 0; i < selectBoxes.length; i++) {
+                        const selectBox = selectBoxes[i];
+                        if (!selectBox.value) {
+                            window.confirm("请选择一个选项");
+                            event.preventDefault();
+                            return false;
+                        }
+                    }
+                });
+                return true;
+            } catch (error) {
+                console.error("An error occurred:", error);
             }
         }
     </script>
@@ -70,7 +78,7 @@
                 <td>{{ form.asset_ip }}</td>
                 <td>{{ form.server_name }}</td>
                 <td>
-                    <select name="forms">
+                    <select name="forms" id="mySelect">
                         <option value="1" {% if form.time_synced %}selected{% endif %}>是</option>
                         <option value="0" {% if not form.time_synced %}selected{% endif %}>否</option>
                         <option value="" {% if form.time_synced is none %}selected{% endif %}>请选择</option>
@@ -105,7 +113,7 @@
         {% endfor %}
         </tbody>
     </table>
-    <button type="submit" onclick="checkSelection()">提交</button>
+    <button type="submit" id="myButton" onclick="checkSelection()">提交</button>
 </form>
 <a href="javascript:history.back()">返回</a>
 </body>
