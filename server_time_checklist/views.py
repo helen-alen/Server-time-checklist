@@ -1,7 +1,8 @@
+from django.db.models import Max
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
-from datetime import date
+from datetime import date, timedelta
 from .models import ServerTimeChecklist
 from .forms import ServerTimeCheckListForm
 from datetime import datetime
@@ -19,9 +20,29 @@ def time_select(request):
 
 def checklist_page(request, selected_time):
     day_value = int(selected_time.split('-')[2])
-    start_id = (day_value - 1) * 11 + 1
-    end_id = day_value * 11
-    queryset = ServerTimeChecklist.objects.filter(id__range=(start_id, end_id))
+
+    # start_id = (day_value - 1) * 11 + 1
+    # end_id = day_value * 11
+    # queryset = ServerTimeChecklist.objects.filter(id__range=(start_id, end_id))
+    selected_time_obj = datetime.strptime(selected_time, '%Y-%m-%d')
+    # print(selected_time_obj)
+    start_id = 1
+    end_id = ServerTimeChecklist.objects.aggregate(Max('id'))['id__max']
+    queryset = ServerTimeChecklist.objects.filter(id__range=(start_id, end_id), time_synced=0,
+                                                  review_time__in=[selected_time_obj - timedelta(days=1)])[:15]
+    # print(selected_time_obj - timedelta(days=1))
+    print(queryset.count())
+    if queryset.count() < 15:
+        random_queryset = ServerTimeChecklist.objects.filter(time_synced__isnull=True).exclude(
+            id__in=queryset.values_list('id', flat=True)).order_by('?')[:15 - queryset.count()]
+        queryset = list(queryset) + list(random_queryset)
+    queryset = list(queryset)
+    for data in queryset:
+        days_difference = (selected_time_obj - data.check_time).days
+        if days_difference >= 2 and data.time_synced == 0:
+            data.is_red = True
+        else:
+            data.is_red = False
     return render(request, 'updatechecklist.html', {'selected_time': selected_time, 'queryset': queryset})
 
 
@@ -32,16 +53,17 @@ def update_checklist(request):
         # print(request.method)
         # print(request.POST.getlist('forms'))
         form_data = request.POST.getlist('forms')
-        for i in range(len(form_data) // 5):
+        for i in range(len(form_data) // 6):
             # 解析表单数据
             # print(i)
             # print(len(form_data)//5)
             # print(range(len(form_data)//5))
-            id = form_data[i * 5 + 0]
-            time_synced = form_data[i * 5 + 1]
-            check_time = form_data[i * 5 + 2]
-            is_adjusted = form_data[i * 5 + 3]
-            checked_by = form_data[i * 5 + 4]
+            id = form_data[i * 6 + 0]
+            time_synced = form_data[i * 6 + 1]
+            check_time = form_data[i * 6 + 2]
+            review_time = form_data[i * 6 + 3]
+            is_adjusted = form_data[i * 6 + 4]
+            checked_by = form_data[i * 6 + 5]
 
             # 根据ID查找对应的ServerTimeChecklist对象
             server_time_checklist = ServerTimeChecklist.objects.get(id=id)
@@ -49,6 +71,7 @@ def update_checklist(request):
             # 更新对象的字段值
             server_time_checklist.time_synced = bool(int(time_synced))
             server_time_checklist.check_time = check_time
+            server_time_checklist.review_time = review_time
             server_time_checklist.is_adjusted = bool(int(is_adjusted))
             server_time_checklist.checked_by = checked_by
 
@@ -61,6 +84,7 @@ def update_checklist(request):
                     'server_name': server_time_checklist.server_name,
                     'time_synced': server_time_checklist.time_synced,
                     'check_time': server_time_checklist.check_time,
+                    'review_time': server_time_checklist.review_time,
                     'is_adjusted': server_time_checklist.is_adjusted,
                     'checked_by': server_time_checklist.checked_by,
                 })
@@ -71,10 +95,11 @@ def update_checklist(request):
                     'server_name': server_time_checklist.server_name,
                     'time_synced': server_time_checklist.time_synced,
                     'check_time': server_time_checklist.check_time,
+                    'review_time': server_time_checklist.review_time,
                     'is_adjusted': server_time_checklist.is_adjusted,
                     'checked_by': server_time_checklist.checked_by,
                 })
-                if i == len(form_data) // 5:
+                if i == len(form_data) // 6:
                     break
             # 添加修改后的数据到checklist_data列表中
         # return redirect('update_checklist')
@@ -83,4 +108,3 @@ def update_checklist(request):
         return render(request, 'checklist.html', {'checklist_data': checklist_data})
     else:
         return HttpResponse("Hello world!")
-

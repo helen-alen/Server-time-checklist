@@ -54,6 +54,7 @@
         <th>服务器名称</th>
         <th>时间是否同步</th>
         <th>核对时间</th>
+        <th>复核时间</th>
         <th>是否已调整</th>
         <th>检查人</th>
     </tr>
@@ -72,6 +73,7 @@
                 {% endif %}
             </td>
             <td>{{ data.check_time }}</td>
+            <td>{{ data.review_time }}</td>
             <td>
                 {% if data.is_adjusted == True %}
                     是
