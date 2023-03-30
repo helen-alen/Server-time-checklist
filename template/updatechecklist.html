@@ -32,6 +32,11 @@
         .my-table tr:hover {
             background-color: #f5f5f5;
         }
+
+        .red {
+            color: red;
+        }
+
     </style>
     <script>
         function checkSelection() {
@@ -73,7 +78,8 @@
         </thead>
         <tbody>
         {% for form in queryset %}
-            <tr>
+{#            {% if (data.review_time-data.check_time).days >= 2 and data.time_synced == 0 %}class="red"{% endif %}#}
+            <tr >
                 <td>{{ form.id }}</td>
                 <input type="hidden" name="forms" value="{{ form.id }}">
                 <td>{{ form.asset_ip }}</td>

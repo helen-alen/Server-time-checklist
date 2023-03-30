@@ -1,4 +1,5 @@
 from django.db.models import Max
+from django.db.models.expressions import Random
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
@@ -6,6 +7,7 @@ from datetime import date, timedelta
 from .models import ServerTimeChecklist
 from .forms import ServerTimeCheckListForm
 from datetime import datetime
+import random
 
 
 # Create your views here.
@@ -20,29 +22,30 @@ def time_select(request):
 
 def checklist_page(request, selected_time):
     day_value = int(selected_time.split('-')[2])
-
-    # start_id = (day_value - 1) * 11 + 1
-    # end_id = day_value * 11
-    # queryset = ServerTimeChecklist.objects.filter(id__range=(start_id, end_id))
     selected_time_obj = datetime.strptime(selected_time, '%Y-%m-%d')
-    # print(selected_time_obj)
     start_id = 1
     end_id = ServerTimeChecklist.objects.aggregate(Max('id'))['id__max']
+    desired_object_count = 15
     queryset = ServerTimeChecklist.objects.filter(id__range=(start_id, end_id), time_synced=0,
-                                                  review_time__in=[selected_time_obj - timedelta(days=1)])[:15]
-    # print(selected_time_obj - timedelta(days=1))
-    print(queryset.count())
-    if queryset.count() < 15:
-        random_queryset = ServerTimeChecklist.objects.filter(time_synced__isnull=True).exclude(
-            id__in=queryset.values_list('id', flat=True)).order_by('?')[:15 - queryset.count()]
+                                                  review_time__in=[selected_time_obj - timedelta(days=1)])[
+               :desired_object_count]
+    if queryset.count() < desired_object_count:
+        ids = queryset.values_list('id', flat=True)
+        random_queryset = ServerTimeChecklist.objects.filter(time_synced__isnull=True).order_by('?')[
+                          :desired_object_count - len(ids)]
         queryset = list(queryset) + list(random_queryset)
     queryset = list(queryset)
-    for data in queryset:
-        days_difference = (selected_time_obj - data.check_time).days
-        if days_difference >= 2 and data.time_synced == 0:
-            data.is_red = True
-        else:
-            data.is_red = False
+    # print(len(queryset))
+    # print(selected_time_obj.day)
+    # for data in queryset:
+    #     check_time_obj = datetime.strptime(data.check_time, '%Y-%m-%d')
+    #     days_difference = selected_time_obj.day - check_time_obj.day
+    #     print(days_difference)
+    #     if days_difference >= 2 and data.time_synced == 0:
+    #         data.is_red= True
+    #     else:
+    #         data.is_red = False
+    #     data.save()
     return render(request, 'updatechecklist.html', {'selected_time': selected_time, 'queryset': queryset})
 
 
@@ -55,9 +58,6 @@ def update_checklist(request):
         form_data = request.POST.getlist('forms')
         for i in range(len(form_data) // 6):
             # 解析表单数据
-            # print(i)
-            # print(len(form_data)//5)
-            # print(range(len(form_data)//5))
             id = form_data[i * 6 + 0]
             time_synced = form_data[i * 6 + 1]
             check_time = form_data[i * 6 + 2]
@@ -101,10 +101,7 @@ def update_checklist(request):
                 })
                 if i == len(form_data) // 6:
                     break
-            # 添加修改后的数据到checklist_data列表中
-        # return redirect('update_checklist')
         # 渲染模板，并传递checklist_data到模板中
-        # print(checklist_data)
         return render(request, 'checklist.html', {'checklist_data': checklist_data})
     else:
         return HttpResponse("Hello world!")
