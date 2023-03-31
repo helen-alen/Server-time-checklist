@@ -86,18 +86,16 @@
                 <td>{{ form.server_name }}</td>
                 <td>
                     <select name="forms" id="mySelect">
-                        <option value="1" {% if form.time_synced %}selected{% endif %}>是</option>
-                        <option value="0" {% if not form.time_synced %}selected{% endif %}>否</option>
-                        <option value="" {% if form.time_synced is none %}selected{% endif %}>请选择</option>
+                        <option value="1" {% if form.time_synced == None %}selected{% endif %}>是</option>
+                        <option value="0" {% if form.time_synced == False %}selected{% endif %}>否</option>
                     </select>
                 </td>
-                <td><input type="date" name="forms" value="{% if form.check_time %}{{ form.check_time|date:'Y-m-d' }}{% else %}{{ date.today|date:'Y-m-d' }}{% endif %}"></td>
+                <td><input type="date" name="forms" value="{% if form.check_time %}{{ form.check_time|date:'Y-m-d' }}{% else %}{{ date_today|date:'Y-m-d' }}{% endif %}"></td>
                 <td><input type="date" name="forms" value="{% if form.review_time %}{{ form.review_time|date:'Y-m-d' }}{% else %}{{ date.today|date:'Y-m-d' }}{% endif %}"></td>
                 <td>
                     <select name="forms">
-                        <option value="1" {% if form.is_adjusted %}selected{% endif %}>是</option>
-                        <option value="0" {% if not form.is_adjusted %}selected{% endif %}>否</option>
-                        <option value="" {% if form.is_adjusted is none %}selected{% endif %}>请选择</option>
+                        <option value="1" {% if form.is_adjusted == None %}selected{% endif %}>是</option>
+                        <option value="0" {% if form.is_adjusted == False %}selected{% endif %}>否</option>
                     </select>
                 </td>
                 <td>
@@ -121,7 +119,7 @@
         {% endfor %}
         </tbody>
     </table>
-    <button type="submit" id="myButton" onclick="checkSelection()">提交</button>
+    <button type="submit" id="myButton">提交</button>
 </form>
 <a href="javascript:history.back()">返回</a>
 </body>

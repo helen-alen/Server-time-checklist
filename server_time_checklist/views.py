@@ -21,19 +21,20 @@ def time_select(request):
 
 
 def checklist_page(request, selected_time):
-    day_value = int(selected_time.split('-')[2])
     selected_time_obj = datetime.strptime(selected_time, '%Y-%m-%d')
     start_id = 1
     end_id = ServerTimeChecklist.objects.aggregate(Max('id'))['id__max']
     desired_object_count = 15
     queryset = ServerTimeChecklist.objects.filter(id__range=(start_id, end_id), time_synced=0,
-                                                  review_time__in=[selected_time_obj - timedelta(days=1)])[
-               :desired_object_count]
+                                                  review_time__in=[selected_time_obj - timedelta(days=1)]).order_by(
+        'id')[:desired_object_count]
+    # print(queryset.count())
     if queryset.count() < desired_object_count:
         ids = queryset.values_list('id', flat=True)
-        random_queryset = ServerTimeChecklist.objects.filter(time_synced__isnull=True).order_by('?')[
+        random_queryset = ServerTimeChecklist.objects.filter(time_synced__isnull=True).order_by('id')[
                           :desired_object_count - len(ids)]
         queryset = list(queryset) + list(random_queryset)
+    queryset = sorted(queryset, key=lambda x: x.id)
     queryset = list(queryset)
     # print(len(queryset))
     # print(selected_time_obj.day)
@@ -46,7 +47,8 @@ def checklist_page(request, selected_time):
     #     else:
     #         data.is_red = False
     #     data.save()
-    return render(request, 'updatechecklist.html', {'selected_time': selected_time, 'queryset': queryset})
+    return render(request, 'updatechecklist.html',
+                  {'selected_time': selected_time, 'queryset': queryset, 'date_today': selected_time_obj})
 
 
 @require_POST
@@ -65,43 +67,56 @@ def update_checklist(request):
             is_adjusted = form_data[i * 6 + 4]
             checked_by = form_data[i * 6 + 5]
 
+            # print(review_time)
             # 根据ID查找对应的ServerTimeChecklist对象
             server_time_checklist = ServerTimeChecklist.objects.get(id=id)
 
             # 更新对象的字段值
             server_time_checklist.time_synced = bool(int(time_synced))
             server_time_checklist.check_time = check_time
-            server_time_checklist.review_time = review_time
+            if review_time == "":
+                server_time_checklist.review_time = None
+            else:
+                server_time_checklist.review_time = review_time
             server_time_checklist.is_adjusted = bool(int(is_adjusted))
             server_time_checklist.checked_by = checked_by
 
+            server_time_checklist.save()
+            checklist_data.append({
+                'id': server_time_checklist.id,
+                'asset_ip': server_time_checklist.asset_ip,
+                'server_name': server_time_checklist.server_name,
+                'time_synced': server_time_checklist.time_synced,
+                'check_time': server_time_checklist.check_time,
+                'review_time': server_time_checklist.review_time,
+                'is_adjusted': server_time_checklist.is_adjusted,
+                'checked_by': server_time_checklist.checked_by,
+            })
             # 保存更新后的对象
-            try:
-                server_time_checklist.save()
-                checklist_data.append({
-                    'id': server_time_checklist.id,
-                    'asset_ip': server_time_checklist.asset_ip,
-                    'server_name': server_time_checklist.server_name,
-                    'time_synced': server_time_checklist.time_synced,
-                    'check_time': server_time_checklist.check_time,
-                    'review_time': server_time_checklist.review_time,
-                    'is_adjusted': server_time_checklist.is_adjusted,
-                    'checked_by': server_time_checklist.checked_by,
-                })
-            except:
-                checklist_data.append({
-                    'id': server_time_checklist.id,
-                    'asset_ip': server_time_checklist.asset_ip,
-                    'server_name': server_time_checklist.server_name,
-                    'time_synced': server_time_checklist.time_synced,
-                    'check_time': server_time_checklist.check_time,
-                    'review_time': server_time_checklist.review_time,
-                    'is_adjusted': server_time_checklist.is_adjusted,
-                    'checked_by': server_time_checklist.checked_by,
-                })
-                if i == len(form_data) // 6:
-                    break
-        # 渲染模板，并传递checklist_data到模板中
-        return render(request, 'checklist.html', {'checklist_data': checklist_data})
-    else:
-        return HttpResponse("Hello world!")
+            # try:
+            #     server_time_checklist.save()
+            #     checklist_data.append({
+            #         'id': server_time_checklist.id,
+            #         'asset_ip': server_time_checklist.asset_ip,
+            #         'server_name': server_time_checklist.server_name,
+            #         'time_synced': server_time_checklist.time_synced,
+            #         'check_time': server_time_checklist.check_time,
+            #         'review_time': server_time_checklist.review_time,
+            #         'is_adjusted': server_time_checklist.is_adjusted,
+            #         'checked_by': server_time_checklist.checked_by,
+            #     })
+            # except:
+            #     checklist_data.append({
+            #         'id': server_time_checklist.id,
+            #         'asset_ip': server_time_checklist.asset_ip,
+            #         'server_name': server_time_checklist.server_name,
+            #         'time_synced': server_time_checklist.time_synced,
+            #         'check_time': server_time_checklist.check_time,
+            #         'review_time': server_time_checklist.review_time,
+            #         'is_adjusted': server_time_checklist.is_adjusted,
+            #         'checked_by': server_time_checklist.checked_by,
+            #     })
+            if i == len(form_data) // 6:
+                break
+    # 渲染模板，并传递checklist_data到模板中
+    return render(request, 'checklist.html', {'checklist_data': checklist_data})
