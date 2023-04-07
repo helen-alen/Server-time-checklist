@@ -90,12 +90,14 @@
                         <option value="0" {% if form.time_synced == False %}selected{% endif %}>否</option>
                     </select>
                 </td>
-                <td><input type="date" name="forms" value="{% if form.check_time %}{{ form.check_time|date:'Y-m-d' }}{% else %}{{ date_today|date:'Y-m-d' }}{% endif %}"></td>
+                <td><input type="date" name="forms" value="{{ date_today|date:'Y-m-d' }}"></td>
+{#                <td><input type="date" name="forms" value="{% if form.check_time %}{{ form.check_time|date:'Y-m-d' }}{% else %}{{ date_today|date:'Y-m-d' }}{% endif %}"></td>#}
                 <td><input type="date" name="forms" value="{% if form.review_time %}{{ form.review_time|date:'Y-m-d' }}{% else %}{{ date.today|date:'Y-m-d' }}{% endif %}"></td>
                 <td>
                     <select name="forms">
-                        <option value="1" {% if form.is_adjusted == None %}selected{% endif %}>是</option>
-                        <option value="0" {% if form.is_adjusted == False %}selected{% endif %}>否</option>
+                        <option value="0" {% if form.is_adjusted == None %}selected{% endif %}>否</option>
+                        <option value="1">是</option>
+{#                        <option value="1" {% if form.is_adjusted == False %}selected{% endif %}>是</option>#}
                     </select>
                 </td>
                 <td>

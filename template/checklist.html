@@ -30,6 +30,10 @@
         .my-table tr:hover {
             background-color: #f5f5f5;
         }
+
+        .red {
+            color: red;
+        }
     </style>
     <script>
         function printpage() {
@@ -58,7 +62,7 @@
     </thead>
     <tbody>
     {% for data in checklist_data %}
-        <tr>
+        <tr {% if data.time_synced == 0 %}class="red"{% endif %}>
             <td>{{ data.id }}</td>
             <td>{{ data.asset_ip }}</td>
             <td>{{ data.server_name }}</td>
@@ -70,7 +74,7 @@
                 {% endif %}
             </td>
             <td>{{ data.check_time }}</td>
-            <td>{{ data.review_time }}</td>
+            <td>{{ data.review_time|default:"" }}</td>
             <td>
                 {% if data.is_adjusted == True %}
                     是
