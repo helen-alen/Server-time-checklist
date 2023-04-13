@@ -2,6 +2,8 @@ from django.db.models import Max, Min
 from django.db.models.expressions import Random
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.utils.dateparse import parse_date
+from django.utils.datetime_safe import time
 from django.views.decorators.http import require_POST
 from datetime import date, timedelta
 from .models import ServerTimeChecklist
@@ -25,14 +27,34 @@ def checklist_page(request, selected_time):
     start_id = 1
     end_id = ServerTimeChecklist.objects.aggregate(Max('id'))['id__max']
 
-    yesterday_start = selected_time_obj - timedelta(days=1)
-    yesterday_end = yesterday_start + timedelta(days=1, seconds=-1)
+    # 获取ServerTimeChecklist模型的所有日期数据
+    date_list = ServerTimeChecklist.objects.exclude(check_time__isnull=True).values_list('check_time', flat=True)
+    # print(date_list)
 
+    # 确定与selected_time_obj最接近的日期并存储在mindate中
+    mindelta = timedelta(days=365 * 100)  # 初始差值假设为100年
+    mindate = None
+    loop_count = 0
+    # print(len(date_list))
+    for date_str in date_list:
+        date_obj = datetime.combine(date_str, time.min)
+        delta = abs(selected_time_obj - date_obj)
+        loop_count += 1
+        # print(loop_count)
+        if loop_count == len(date_list):
+            break
+        if delta < mindelta:
+            mindelta = delta
+            mindate = date_obj
+
+    yesterday_start = mindate
+    yesterday_end = yesterday_start + timedelta(days=1, seconds=-1)
+    # print(yesterday_end)
     # 每日服务器检查量
     desired_object_count = 15
 
-    queryset = ServerTimeChecklist.objects.filter(id__range=(start_id, end_id), time_synced=0).order_by('id')[
-               :desired_object_count]
+    queryset = ServerTimeChecklist.objects.filter(id__range=(start_id, end_id), time_synced=0, is_adjusted=0).order_by(
+        'id')[:desired_object_count]
 
     # review_time__in = [selected_time_obj - timedelta(days=1)]
     # print(queryset.count())

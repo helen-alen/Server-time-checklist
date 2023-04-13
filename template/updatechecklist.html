@@ -58,6 +58,26 @@
                 console.error("An error occurred:", error);
             }
         }
+
+        // 绑定onchange事件
+        document.getElementsByName("forms")[0].onchange = function() {
+            // 获取第一行选中的数据
+            var selectedValue = this.value;
+
+            // 获取要同步更新的<select>元素引用
+            var selectElems = document.getElementsByName("forms");
+
+            // 遍历所有要同步更新的<select>元素
+            for (var i = 1; i < selectElems.length; i++) {
+            // 设置其selectedIndex属性，选中对应的<option>元素
+                for (var j = 0; j < selectElems[i].options.length; j++) {
+                    if (selectElems[i].options[j].value === selectedValue) {
+                        selectElems[i].selectedIndex = j;
+                        break;
+                    }
+                }
+            }
+        }
     </script>
 </head>
 <body>
@@ -90,8 +110,8 @@
                         <option value="0" {% if form.time_synced == False %}selected{% endif %}>否</option>
                     </select>
                 </td>
-                <td><input type="date" name="forms" value="{{ date_today|date:'Y-m-d' }}"></td>
-{#                <td><input type="date" name="forms" value="{% if form.check_time %}{{ form.check_time|date:'Y-m-d' }}{% else %}{{ date_today|date:'Y-m-d' }}{% endif %}"></td>#}
+{#                <td><input type="date" name="forms" value="{{ date_today|date:'Y-m-d' }}"></td>#}
+                <td><input type="date" name="forms" value="{% if form.check_time %}{{ form.check_time|date:'Y-m-d' }}{% else %}{{ date_today|date:'Y-m-d' }}{% endif %}"></td>
                 <td><input type="date" name="forms" value="{% if form.review_time %}{{ form.review_time|date:'Y-m-d' }}{% else %}{{ date.today|date:'Y-m-d' }}{% endif %}"></td>
                 <td>
                     <select name="forms">
