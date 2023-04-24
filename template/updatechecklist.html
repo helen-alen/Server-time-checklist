@@ -90,8 +90,8 @@
             <th>资产IP</th>
             <th>服务器名称</th>
             <th>时间是否同步</th>
-            <th>核对时间</th>
-            <th>复核时间</th>
+            <th>巡检时间</th>
+{#            <th>复核时间</th>#}
             <th>是否已调整</th>
             <th>检查人</th>
         </tr>
@@ -111,8 +111,8 @@
                     </select>
                 </td>
 {#                <td><input type="date" name="forms" value="{{ date_today|date:'Y-m-d' }}"></td>#}
-                <td><input type="date" name="forms" value="{% if form.check_time %}{{ form.check_time|date:'Y-m-d' }}{% else %}{{ date_today|date:'Y-m-d' }}{% endif %}"></td>
-                <td><input type="date" name="forms" value="{% if form.review_time %}{{ form.review_time|date:'Y-m-d' }}{% else %}{{ date.today|date:'Y-m-d' }}{% endif %}"></td>
+                <td><input type="date" name="forms" value="{% if form.time_synced == False %}{{ form.check_time|date:'Y-m-d' }}{% else %}{{ date_today|date:'Y-m-d' }}{% endif %}"></td>
+{#                <td><input type="date" name="forms" value="{% if form.review_time %}{{ form.review_time|date:'Y-m-d' }}{% else %}{{ date.today|date:'Y-m-d' }}{% endif %}"></td>#}
                 <td>
                     <select name="forms">
                         <option value="0" {% if form.is_adjusted == None %}selected{% endif %}>否</option>
@@ -123,18 +123,19 @@
                 <td>
                     <select name="forms">
                         <option value="">请选择</option>
-                        <option value="泮金鸽" {% if form.checked_by == '泮金鸽' %}selected{% endif %}>泮金鸽</option>
-                        <option value="周洲" {% if form.checked_by == '周洲' %}selected{% endif %}>周洲</option>
-                        <option value="詹雨衡" {% if form.checked_by == '詹雨衡' %}selected{% endif %}>詹雨衡</option>
-                        <option value="刘晨媛" {% if form.checked_by == '刘晨媛' %}selected{% endif %}>刘晨媛</option>
-                        <option value="王盛阳" {% if form.checked_by == '王盛阳' %}selected{% endif %}>王盛阳</option>
-                        <option value="金远凡" {% if form.checked_by == '金远凡' %}selected{% endif %}>金远凡</option>
-                        <option value="连冠" {% if form.checked_by == '连冠' %}selected{% endif %}>连冠</option>
-                        <option value="倪方杰" {% if form.checked_by == '倪方杰' %}selected{% endif %}>倪方杰</option>
-                        <option value="邵华强" {% if form.checked_by == '邵华强' %}selected{% endif %}>邵华强</option>
-                        <option value="陈振宇" {% if form.checked_by == '陈振宇' %}selected{% endif %}>陈振宇</option>
-                        <option value="张海伦" {% if form.checked_by == '张海伦' %}selected{% endif %}>张海伦</option>
-                        <option value="张智杰" {% if form.checked_by == '张智杰' %}selected{% endif %}>张智杰</option>
+                        <option value="泮金鸽" {% if form.checked_by == '泮金鸽' and form.time_synced == False %}selected{% endif %}>泮金鸽</option>
+                        <option value="周洲" {% if form.checked_by == '周洲' and form.time_synced == False %}selected{% endif %}>周洲</option>
+                        <option value="詹雨衡" {% if form.checked_by == '詹雨衡' and form.time_synced == False %}selected{% endif %}>詹雨衡</option>
+                        <option value="刘晨媛" {% if form.checked_by == '刘晨媛' and form.time_synced == False %}selected{% endif %}>刘晨媛</option>
+{#                        <option value="刘晨媛">刘晨媛</option>#}
+                        <option value="王盛阳" {% if form.checked_by == '王盛阳' and form.time_synced == False %}selected{% endif %}>王盛阳</option>
+                        <option value="金远凡" {% if form.checked_by == '金远凡' and form.time_synced == False %}selected{% endif %}>金远凡</option>
+                        <option value="连冠" {% if form.checked_by == '连冠' and form.time_synced == False %}selected{% endif %}>连冠</option>
+                        <option value="倪方杰" {% if form.checked_by == '倪方杰' and form.time_synced == False %}selected{% endif %}>倪方杰</option>
+                        <option value="邵华强" {% if form.checked_by == '邵华强' and form.time_synced == False %}selected{% endif %}>邵华强</option>
+                        <option value="陈振宇" {% if form.checked_by == '陈振宇' and form.time_synced == False %}selected{% endif %}>陈振宇</option>
+                        <option value="张海伦" {% if form.checked_by == '张海伦' and form.time_synced == False %}selected{% endif %}>张海伦</option>
+                        <option value="张智杰" {% if form.checked_by == '张智杰' and form.time_synced == False %}selected{% endif %}>张智杰</option>
                     </select>
                 </td>
             </tr>

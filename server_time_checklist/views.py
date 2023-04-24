@@ -97,16 +97,16 @@ def update_checklist(request):
         # print(request.method)
         # print(request.POST.getlist('forms'))
         form_data = request.POST.getlist('forms')
-        data_len = len(form_data) // 6
+        data_len = len(form_data) // 5
         for i in range(data_len):
 
             # 解析表单数据
-            id = form_data[i * 6 + 0]
-            time_synced = form_data[i * 6 + 1]
-            check_time = form_data[i * 6 + 2]
-            review_time = form_data[i * 6 + 3]
-            is_adjusted = form_data[i * 6 + 4]
-            checked_by = form_data[i * 6 + 5]
+            id = form_data[i * 5 + 0]
+            time_synced = form_data[i * 5 + 1]
+            check_time = form_data[i * 5 + 2]
+            # review_time = form_data[i * 6 + 3]
+            is_adjusted = form_data[i * 5 + 3]
+            checked_by = form_data[i * 5 + 4]
 
             # if time_synced == 0:
             #     review_time = datetime.now().date() - timedelta(days=1)
@@ -118,10 +118,10 @@ def update_checklist(request):
             # 更新对象的字段值
             server_time_checklist.time_synced = bool(int(time_synced))
             server_time_checklist.check_time = check_time
-            if review_time == "":
-                server_time_checklist.review_time = None
-            else:
-                server_time_checklist.review_time = review_time
+            # if review_time == "":
+            #     server_time_checklist.review_time = None
+            # else:
+            #     server_time_checklist.review_time = review_time
             server_time_checklist.is_adjusted = bool(int(is_adjusted))
             server_time_checklist.checked_by = checked_by
 
@@ -132,7 +132,7 @@ def update_checklist(request):
                 'server_name': server_time_checklist.server_name,
                 'time_synced': server_time_checklist.time_synced,
                 'check_time': server_time_checklist.check_time,
-                'review_time': server_time_checklist.review_time,
+                # 'review_time': server_time_checklist.review_time,
                 'is_adjusted': server_time_checklist.is_adjusted,
                 'checked_by': server_time_checklist.checked_by,
             })
